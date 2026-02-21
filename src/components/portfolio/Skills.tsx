@@ -1,19 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 
 const skills = [
-  { name: "Flutter", level: 95, icon: "🦋" },
-  { name: "Dart", level: 92, icon: "🎯" },
-  { name: "Firebase", level: 88, icon: "🔥" },
-  { name: "BLoC / Cubit", level: 90, icon: "🧱" },
-  { name: "REST APIs & GraphQL", level: 85, icon: "🔗" },
-  { name: "UI/UX Design", level: 80, icon: "🎨" },
-  { name: "Git & CI/CD", level: 82, icon: "⚙️" },
-  { name: "Testing & TDD", level: 78, icon: "🧪" },
+  { name: "Flutter Development", level: 98, icon: "🦋" },
+  { name: "Dart Programming", level: 95, icon: "🎯" },
+  { name: "Firebase (Auth, Firestore, Hosting)", level: 92, icon: "🔥" },
+  { name: "State Management (BLoC, Provider)", level: 90, icon: "🧱" },
+  { name: "API Integration & Backend", level: 88, icon: "🔗" },
+  { name: "Audio Streaming & Multimedia", level: 85, icon: "🎧" },
+  { name: "Database (SQLite & Hive)", level: 82, icon: "💾" },
+  { name: "App Publishing & Store SEO", level: 95, icon: "🚀" },
 ];
 
 const techBadges = [
-  "Flutter", "Dart", "Firebase", "BLoC", "GetX", "Riverpod", "SQLite",
-  "GraphQL", "REST", "GitHub Actions", "Fastlane", "Figma", "VS Code",
+  "Flutter", "Dart", "Firebase", "BLoC", "Provider", "GetX", "SQLite",
+  "Google Play Console", "Maps API", "OneSignal", "Git", "GitHub", "Postman",
+  "Responsive Design", "Local Notifications", "Audio Player", "PDF Generation"
 ];
 
 function SkillBar({ name, level, icon, animate }: { name: string; level: number; icon: string; animate: boolean }) {
@@ -52,24 +53,26 @@ export default function Skills() {
   return (
     <section id="skills" className="py-24" ref={sectionRef}>
       <div className="container mx-auto px-6">
-        <div className="text-center mb-4">
-          <span className="accent-line" />
-          <h2 className="section-heading">Skills & Expertise</h2>
-          <p className="section-subheading">
-            Technologies I work with daily to build world-class mobile experiences.
+        <div className="text-center mb-12">
+          <span className="accent-line mx-auto" />
+          <h2 className="section-heading mt-4">Skills & Expertise</h2>
+          <p className="section-subheading max-w-2xl mx-auto">
+            Technologies and methodologies I use to build robust, high-performance mobile applications that users love.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Skill bars */}
-          <div className="glass-card p-8 space-y-6">
-            <h3 className="font-display font-bold text-foreground mb-6">Proficiency Levels</h3>
+          <div className="glass-card p-8 space-y-6 border-primary/10">
+            <h3 className="font-display font-bold text-foreground mb-6 flex items-center gap-2">
+               Technical Proficiency
+            </h3>
             {skills.map((s) => (
               <SkillBar key={s.name} {...s} animate={animate} />
             ))}
           </div>
 
-          {/* Tech stack */}
+          {/* Right Column */}
           <div className="space-y-6">
             <div className="glass-card p-8">
               <h3 className="font-display font-bold text-foreground mb-6">Tech Stack</h3>
@@ -77,7 +80,7 @@ export default function Skills() {
                 {techBadges.map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1.5 rounded-lg bg-secondary border border-border text-foreground text-sm font-medium hover:border-primary hover:text-primary transition-colors duration-200 cursor-default"
+                    className="px-3 py-1.5 rounded-lg bg-secondary/50 border border-border text-foreground text-[11px] font-bold tracking-tight hover:border-primary hover:text-primary transition-all duration-200 cursor-default uppercase"
                   >
                     {tech}
                   </span>
@@ -85,18 +88,21 @@ export default function Skills() {
               </div>
             </div>
 
-            {/* Quick facts */}
-            <div className="glass-card p-8">
-              <h3 className="font-display font-bold text-foreground mb-4">Quick Facts</h3>
-              <ul className="space-y-3 text-sm text-muted-foreground">
+            {/* Quick Facts */}
+            <div className="glass-card p-8 border-accent/20">
+              <h3 className="font-display font-bold text-foreground mb-4">Professional Facts</h3>
+              <ul className="space-y-4 text-sm text-muted-foreground">
                 {[
-                  "✅ iOS & Android with a single codebase",
-                  "✅ MVVM + BLoC architecture enthusiast",
-                  "✅ Published 8 apps to App Store & Play Store",
-                  "✅ Open-source contributor (2K+ GitHub stars)",
-                  "✅ Agile / Scrum certified practitioner",
+                  { icon: "🌍", text: "Developing full-featured Android apps with a single codebase." },
+                  { icon: "📱", text: "Successfully published 20+ production apps on Google Play Store." },
+                  { icon: "🎧", text: "Expertise in Audio Streaming integration and multimedia handling." },
+                  { icon: "📈", text: "Specialized in local database management (Offline-first architecture)." },
+                  { icon: "🛠️", text: "Committed to best practices (Clean Code & Scalable Architecture)." },
                 ].map((fact, i) => (
-                  <li key={i} className="flex items-start gap-2">{fact}</li>
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="text-lg leading-none">{fact.icon}</span>
+                    <span className="leading-relaxed">{fact.text}</span>
+                  </li>
                 ))}
               </ul>
             </div>

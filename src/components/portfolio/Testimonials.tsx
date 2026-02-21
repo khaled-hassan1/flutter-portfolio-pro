@@ -1,36 +1,36 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, Star, Award } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star, Award, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Sarah Mitchell",
-    role: "CTO, FinFlow Inc.",
-    avatar: "SM",
+    name: "Ahmed Mahmoud",
+    role: "Restaurant Owner (Elragol El3nab Client)",
+    avatar: "AM",
     rating: 5,
-    text: "Alex delivered an exceptional fintech app that exceeded our expectations. The BLoC architecture is clean, the performance is outstanding, and our users love the smooth animations. Highly recommended for any serious mobile project.",
+    text: "Khaled delivered a comprehensive delivery system that completely transformed our restaurant's operations. The app is incredibly fast, and the integration with maps and real-time orders is flawless. A truly professional developer.",
   },
   {
-    name: "Dr. James Okonkwo",
-    role: "Founder, MediTrack",
-    avatar: "JO",
+    name: "Eng. Mohamed Ali",
+    role: "Technical Project Manager",
+    avatar: "MA",
     rating: 5,
-    text: "Working with Alex was a pleasure from start to finish. He understood our complex HIPAA requirements immediately and built a secure, user-friendly healthcare app. The code quality and documentation are first-class.",
+    text: "I've collaborated with Khaled on multiple projects. What sets him apart is his Clean Code approach and his ability to solve complex technical challenges in Flutter. His apps always provide a superior user experience.",
   },
   {
-    name: "Priya Sharma",
-    role: "Product Manager, ShopWave",
-    avatar: "PS",
+    name: "Sarah Hassan",
+    role: "App User (Qatrah Hayat Platform)",
+    avatar: "SH",
     rating: 5,
-    text: "Alex is not just a great developer—he's a strategic partner. He proactively suggested performance improvements and UI tweaks that significantly boosted our conversion rate. The AR feature he built is a game-changer.",
+    text: "The Qatrah Hayat app has saved many lives thanks to its ease of use and quick access to donors. The quality of the app rivals international standards. Thank you for such an amazing effort!",
   },
 ];
 
 const certifications = [
-  { name: "Google Associate Android Developer", issuer: "Google", year: "2023" },
-  { name: "Flutter Development Bootcamp", issuer: "London App Brewery", year: "2022" },
-  { name: "Firebase Fundamentals", issuer: "Google Cloud", year: "2022" },
-  { name: "Agile / Scrum Practitioner", issuer: "Scrum Alliance", year: "2021" },
-  { name: "Clean Architecture in Flutter", issuer: "Reso Coder Academy", year: "2023" },
+  { name: "Flutter & Dart Full Development", issuer: "Udemy / London App Brewery", year: "2023" },
+  { name: "Firebase for Flutter Professionals", issuer: "Google Developer Groups", year: "2023" },
+  { name: "Clean Architecture in Flutter", issuer: "Reso Coder Academy", year: "2024" },
+  { name: "Mobile UI/UX Principles", issuer: "Coursera", year: "2022" },
+  { name: "Android App Publishing Expert", issuer: "Google Play Console Training", year: "2023" },
 ];
 
 export default function Testimonials() {
@@ -44,47 +44,50 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="py-24" style={{ background: "hsl(var(--muted))" }}>
       <div className="container mx-auto px-6">
-        <div className="text-center mb-4">
-          <span className="accent-line" />
-          <h2 className="section-heading">Achievements & Testimonials</h2>
-          <p className="section-subheading">
-            What clients say and milestones I've earned along the way.
+        <div className="text-center mb-12">
+          <span className="accent-line mx-auto" />
+          <h2 className="section-heading mt-4">Achievements & Testimonials</h2>
+          <p className="section-subheading max-w-2xl mx-auto">
+            What clients and users say about my work, alongside the professional milestones I've achieved.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Testimonial Slider */}
-          <div>
-            <div className="glass-card p-8 relative min-h-[280px] flex flex-col justify-between">
+          <div className="relative">
+             <div className="absolute -top-4 -left-4 text-primary/10">
+                <Quote size={80} fill="currentColor" />
+             </div>
+            <div className="glass-card p-8 relative min-h-[300px] flex flex-col justify-between border-primary/10">
               {/* Quote */}
               <div>
-                <div className="flex mb-4">
+                <div className="flex mb-6">
                   {Array.from({ length: t.rating }).map((_, i) => (
                     <Star key={i} size={16} className="text-accent fill-accent" />
                   ))}
                 </div>
-                <p className="text-foreground text-base leading-relaxed italic mb-6">
+                <p className="text-foreground text-lg leading-relaxed italic mb-8 relative z-10">
                   "{t.text}"
                 </p>
               </div>
 
               {/* Author */}
-              <div className="flex items-center gap-4">
-                <div className="w-11 h-11 rounded-full bg-gradient-primary flex items-center justify-center font-display font-bold text-primary-foreground text-sm">
+              <div className="flex items-center gap-4 border-t border-border pt-6">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center font-display font-bold text-primary text-sm border border-primary/20">
                   {t.avatar}
                 </div>
                 <div>
-                  <div className="font-display font-semibold text-foreground">{t.name}</div>
-                  <div className="text-muted-foreground text-sm">{t.role}</div>
+                  <div className="font-display font-bold text-foreground">{t.name}</div>
+                  <div className="text-muted-foreground text-[10px] uppercase tracking-wider font-semibold">{t.role}</div>
                 </div>
               </div>
             </div>
 
             {/* Controls */}
-            <div className="flex items-center gap-4 mt-5">
+            <div className="flex items-center gap-4 mt-6">
               <button
                 onClick={prev}
-                className="w-10 h-10 rounded-xl border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 flex items-center justify-center"
+                className="w-10 h-10 rounded-xl border border-border bg-background hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 flex items-center justify-center shadow-sm"
               >
                 <ChevronLeft size={18} />
               </button>
@@ -94,7 +97,7 @@ export default function Testimonials() {
                   <button
                     key={i}
                     onClick={() => setCurrent(i)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
                       i === current ? "w-8 bg-primary" : "w-2 bg-border"
                     }`}
                   />
@@ -103,7 +106,7 @@ export default function Testimonials() {
 
               <button
                 onClick={next}
-                className="w-10 h-10 rounded-xl border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 flex items-center justify-center"
+                className="w-10 h-10 rounded-xl border border-border bg-background hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 flex items-center justify-center shadow-sm"
               >
                 <ChevronRight size={18} />
               </button>
@@ -111,27 +114,27 @@ export default function Testimonials() {
           </div>
 
           {/* Certifications */}
-          <div>
-            <h3 className="font-display font-bold text-foreground text-lg mb-5 flex items-center gap-2">
-              <Award size={18} className="text-primary" />
+          <div className="space-y-6">
+            <h3 className="font-display font-bold text-foreground text-xl mb-6 flex items-center gap-3">
+              <Award size={24} className="text-primary" />
               Certifications
             </h3>
-            <div className="space-y-3">
+            <div className="space-y-4">
               {certifications.map((cert) => (
                 <div
                   key={cert.name}
-                  className="glass-card p-4 flex items-center justify-between gap-4 hover:border-primary/30 transition-colors duration-200"
+                  className="glass-card p-4 flex items-center justify-between gap-4 hover:border-primary/40 hover:bg-secondary/50 transition-all duration-300"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
-                      <Award size={14} className="text-primary" />
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-primary/5 border border-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Award size={18} className="text-primary/70" />
                     </div>
                     <div>
-                      <div className="font-medium text-foreground text-sm">{cert.name}</div>
+                      <div className="font-bold text-foreground text-sm">{cert.name}</div>
                       <div className="text-muted-foreground text-xs">{cert.issuer}</div>
                     </div>
                   </div>
-                  <span className="text-xs font-mono text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full flex-shrink-0">
+                  <span className="text-[10px] font-bold text-primary bg-primary/10 border border-primary/20 px-2.5 py-1 rounded-lg flex-shrink-0">
                     {cert.year}
                   </span>
                 </div>

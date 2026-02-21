@@ -11,6 +11,19 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
+const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const href = (e.currentTarget as HTMLAnchorElement).href;
+  const hash = href.split("#")[1];
+
+  if (hash && hash !== "hero") {
+    e.preventDefault();
+    const element = document.getElementById(hash);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+};
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -23,25 +36,37 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/90 backdrop-blur-lg border-b border-border shadow-lg" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/90 backdrop-blur-lg border-b border-border shadow-lg" : "bg-transparent"
+        }`}
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#hero" className="font-display font-bold text-xl text-gradient">
-          &lt;Dev /&gt;
+        <a
+          href="#hero"
+          onClick={handleAnchorClick}
+          className="font-display font-bold text-xl text-gradient"
+        >
+          Khaled Ghaly
         </a>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-7">
           {navItems.map((item) => (
-            <a key={item.label} href={item.href} className="nav-link">
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={handleAnchorClick}
+              className="nav-link"
+            >
               {item.label}
             </a>
           ))}
         </nav>
 
-        <a href="#contact" className="hidden md:inline-flex btn-primary text-sm py-2 px-5">
+        <a
+          href="#contact"
+          onClick={handleAnchorClick}
+          className="hidden md:inline-flex btn-primary text-sm py-2 px-5"
+        >
           Hire Me
         </a>
 
@@ -62,13 +87,23 @@ export default function Navbar() {
             <a
               key={item.label}
               href={item.href}
+              onClick={(e) => {
+                handleAnchorClick(e);
+                setMobileOpen(false);
+              }}
               className="nav-link text-base"
-              onClick={() => setMobileOpen(false)}
             >
               {item.label}
             </a>
           ))}
-          <a href="#contact" className="btn-primary text-sm py-2 px-5 w-fit">
+          <a
+            href="#contact"
+            onClick={(e) => {
+              handleAnchorClick(e);
+              setMobileOpen(false);
+            }}
+            className="btn-primary text-sm py-2 px-5 w-fit"
+          >
             Hire Me
           </a>
         </div>

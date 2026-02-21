@@ -30,8 +30,7 @@ export default function Contact() {
   };
 
   const inputClass = (field: string) =>
-    `w-full px-4 py-3 rounded-xl bg-secondary border text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors duration-200 ${
-      errors[field] ? "border-destructive" : "border-border"
+    `w-full px-4 py-3 rounded-xl bg-secondary border text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors duration-200 ${errors[field] ? "border-destructive" : "border-border"
     }`;
 
   return (
@@ -57,8 +56,8 @@ export default function Contact() {
 
               <div className="space-y-4">
                 {[
-                  { icon: Mail, label: "Email", value: "alex@example.com", href: "mailto:alex@example.com" },
-                  { icon: MapPin, label: "Location", value: "London, UK (Remote Available)", href: null },
+                  { icon: Mail, label: "Email", value: "khaled.ghaly303@gmail.com", href: "mailto:khaled.ghaly303@gmail.com" },
+                  // { icon: MapPin, label: "Location", value: "Egypt", href: null },
                 ].map(({ icon: Icon, label, value, href }) => (
                   <div key={label} className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
@@ -82,9 +81,9 @@ export default function Contact() {
               <h4 className="font-display font-semibold text-foreground mb-4 text-sm">Find me online</h4>
               <div className="flex gap-3">
                 {[
-                  { icon: Github, href: "https://github.com", label: "GitHub", color: "text-foreground" },
-                  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn", color: "text-blue-400" },
-                  { icon: Mail, href: "mailto:alex@example.com", label: "Email", color: "text-accent" },
+                  { icon: Github, href: "https://github.com/khaled-hassan1", label: "GitHub", color: "text-foreground" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/khaled-ghlay-b0a525251/", label: "LinkedIn", color: "text-blue-400" },
+                  { icon: Mail, href: "mailto:khaled.ghaly303@gmail.com", label: "Email", color: "text-accent" },
                 ].map(({ icon: Icon, href, label, color }) => (
                   <a
                     key={label}

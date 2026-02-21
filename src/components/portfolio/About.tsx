@@ -1,8 +1,8 @@
 import { Code2, Smartphone, Users } from "lucide-react";
 
 const stats = [
-  { value: "5+", label: "Years Experience" },
-  { value: "30+", label: "Apps Delivered" },
+  { value: "4+", label: "Years Experience" },
+  { value: "20+", label: "Apps Delivered" },
   { value: "15+", label: "Happy Clients" },
   { value: "99%", label: "Client Satisfaction" },
 ];

@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="border-t border-border py-10">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="font-display font-bold text-xl text-gradient">&lt;Dev /&gt;</div>
+          <div className="font-display font-bold text-xl text-gradient">Khaled Ghaly</div>
 
           <p className="text-muted-foreground text-sm flex items-center gap-1">
             Built with <Heart size={13} className="text-destructive fill-destructive" /> using Flutter-inspired design
@@ -13,9 +13,9 @@ export default function Footer() {
 
           <div className="flex items-center gap-4">
             {[
-              { icon: Github, href: "https://github.com", label: "GitHub" },
-              { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-              { icon: Mail, href: "mailto:alex@example.com", label: "Email" },
+              { icon: Github, href: "https://github.com/khaled-hassan1", label: "GitHub" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/khaled-ghlay-b0a525251/", label: "LinkedIn" },
+              { icon: Mail, href: "mailto:khaled.ghaly303@gmail.com", label: "Email" },
             ].map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
@@ -32,7 +32,7 @@ export default function Footer() {
         </div>
 
         <div className="text-center mt-6 text-muted-foreground text-xs">
-          © {new Date().getFullYear()} Alex Carter. All rights reserved.
+          © {new Date().getFullYear()} Khaled Ghal. All rights reserved.
         </div>
       </div>
     </footer>
