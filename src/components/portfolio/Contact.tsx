@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Github, Linkedin, Mail, MapPin, Send, CheckCircle } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Send, CheckCircle, Loader } from "lucide-react";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [loading, setLoading] = useState(false);
 
   const validate = () => {
     const e: Record<string, string> = {};
@@ -15,13 +16,31 @@ export default function Contact() {
     return e;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const e2 = validate();
     if (Object.keys(e2).length > 0) { setErrors(e2); return; }
     setErrors({});
-    setSubmitted(true);
-    setForm({ name: "", email: "", subject: "", message: "" });
+    setLoading(true);
+
+    try {
+      const response = await fetch("https://formspree.io/f/mzdajpkz", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setForm({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setErrors({ submit: "Failed to send message. Please try again." });
+      }
+    } catch (error) {
+      setErrors({ submit: "Network error. Please try again." });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const onChange = (field: string, value: string) => {
@@ -166,9 +185,18 @@ export default function Contact() {
                   <p className="text-xs text-muted-foreground mt-1 text-right">{form.message.length}/1000</p>
                 </div>
 
-                <button type="submit" className="btn-primary w-full justify-center">
-                  <Send size={16} />
-                  Send Message
+                <button type="submit" className="btn-primary w-full justify-center" disabled={loading}>
+                  {loading ? (
+                    <>
+                      <Loader size={16} className="animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={16} />
+                      Send Message
+                    </>
+                  )}
                 </button>
               </form>
             )}

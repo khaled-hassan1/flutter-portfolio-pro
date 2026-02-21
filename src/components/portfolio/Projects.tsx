@@ -236,15 +236,14 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        <div className="mt-20 text-center">
           <a
-            href="https://play.google.com/store/apps/developer?id=Khaled+Ghaly"
+            href="https://play.google.com/store/apps/dev?id=8234838259619919952"
             target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-primary/20 hover:border-primary text-primary font-semibold tracking-wide text-sm transition-all hover:bg-primary/5"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-primary/20 hover:border-primary text-primary font-bold tracking-widest text-xs transition-all hover:bg-primary/5"
           >
-            SEE MORE APPS
-            <ExternalLink size={14} />
+            EXPLORE FULL DEVELOPER PORTFOLIO
+            <ExternalLink size={16} />
           </a>
         </div>
       </div>
