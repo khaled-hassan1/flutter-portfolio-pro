@@ -21,11 +21,14 @@ function useTypingAnimation(phrases: string[]) {
     let timeout: ReturnType<typeof setTimeout>;
 
     if (!deleting && charIndex < current.length) {
-      timeout = setTimeout(() => setCharIndex((c) => c + 1), 80);
+      // سرعة الكتابة: تم تقليلها لـ 40ms لتصبح أسرع بضعفين
+      timeout = setTimeout(() => setCharIndex((c) => c + 1), 40);
     } else if (!deleting && charIndex === current.length) {
-      timeout = setTimeout(() => setDeleting(true), 2000);
+      // مدة الانتظار عند اكتمال الكلمة: 1.5 ثانية (بدلاً من ثانيتين)
+      timeout = setTimeout(() => setDeleting(true), 1500);
     } else if (deleting && charIndex > 0) {
-      timeout = setTimeout(() => setCharIndex((c) => c - 1), 45);
+      // سرعة المسح: سريعة جداً (20ms) لتعطي طابعاً تقنياً
+      timeout = setTimeout(() => setCharIndex((c) => c - 1), 20);
     } else if (deleting && charIndex === 0) {
       setDeleting(false);
       setPhraseIndex((i) => (i + 1) % phrases.length);
@@ -59,7 +62,7 @@ export default function Hero() {
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroBg})` }}
       />
-      <div className="absolute inset-0 bg-background/70" />
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-[2px]" />
 
       {/* Glow orbs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[120px] opacity-20"
@@ -78,31 +81,31 @@ export default function Hero() {
             </div>
 
             {/* Name */}
-            <h1 className="animate-fade-in-up animation-delay-100 font-display text-5xl md:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="animate-fade-in-up animation-delay-100 font-display text-5xl md:text-7xl font-bold mb-6 leading-tight">
               Hi, I'm{" "}
               <span className="text-gradient glow-text">Khaled Ghaly</span>
             </h1>
 
             {/* Typing animation */}
-            <div className="animate-fade-in-up animation-delay-200 font-display text-xl md:text-2xl text-muted-foreground font-medium mb-8 min-h-[2rem]">
+            <div className="animate-fade-in-up animation-delay-200 font-display text-2xl md:text-3xl font-bold mb-8 min-h-[1.5em] flex items-center justify-center md:justify-start">
               <span style={{ color: "hsl(var(--accent))" }}>{typed}</span>
-              <span className="cursor-blink" />
+              <span className="w-[3px] h-[1.2em] bg-accent ml-1 animate-pulse" />
             </div>
 
             {/* Bio intro */}
-            <p className="animate-fade-in-up animation-delay-300 text-muted-foreground mb-10 text-lg">
+            <p className="animate-fade-in-up animation-delay-300 text-muted-foreground mb-10 text-lg max-w-xl">
               Crafting high-performance cross-platform mobile apps that users love.
-              4+ years building production-grade Flutter applications.
+              Specialized in Flutter with 4+ years of real-world production experience.
             </p>
 
             {/* CTA Buttons */}
             <div className="animate-fade-in-up animation-delay-400 flex flex-wrap gap-4 justify-center md:justify-start mb-12">
               <a
-                href="#about"
-                onClick={(e) => handleAnchorClick(e, "about")}
+                href="#projects"
+                onClick={(e) => handleAnchorClick(e, "projects")}
                 className="btn-primary"
               >
-                View My Work
+                View My Projects
               </a>
               <a
                 href="#contact"
@@ -126,7 +129,7 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-10 h-10 rounded-xl border border-border bg-card/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all duration-200"
+                  className="w-10 h-10 rounded-xl border border-border bg-card/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all duration-200 hover:-translate-y-1 shadow-sm"
                 >
                   <Icon size={18} />
                 </a>
@@ -135,15 +138,18 @@ export default function Hero() {
           </div>
 
           {/* Right side - Image */}
-          <div className="flex justify-center items-center md:col-auto">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl blur-2xl" />
-              <div className="relative w-48 h-60 md:w-64 md:h-80 rounded-2xl overflow-hidden border border-primary/20 bg-card/50 flex items-center justify-center">
+          <div className="flex justify-center items-center">
+            <div className="relative group">
+              {/* Animated Rings */}
+              <div className="absolute -inset-4 bg-gradient-to-tr from-primary to-accent rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition duration-500" />
+              
+              <div className="relative w-56 h-72 md:w-72 md:h-96 rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl transform transition duration-500 group-hover:scale-[1.02]">
                 <img
                   src={logoImage}
                   alt="Khaled Ghaly"
                   className="w-full h-full object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
               </div>
             </div>
           </div>
@@ -156,7 +162,8 @@ export default function Hero() {
         onClick={(e) => handleAnchorClick(e, "about")}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground text-sm scroll-bounce"
       >
-        <ChevronDown size={20} />
+        <span className="text-[10px] uppercase tracking-widest font-bold">Scroll</span>
+        <ChevronDown size={20} className="text-primary" />
       </a>
     </section>
   );
