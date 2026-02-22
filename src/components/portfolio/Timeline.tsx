@@ -2,20 +2,20 @@ import { GraduationCap, Briefcase, Award } from "lucide-react";
 
 const timelineItems = [
   {
+    type: "education",
+    year: "2025 – 2026",
+    title: "Professional Training Program in Mobile App Development",
+    org: "National Telecommunication Institute (NTI)",
+    description:
+      "An intensive technical track specialized in cross-platform mobile development (Flutter). Focused on UI/UX best practices, advanced state management, and building high-performance, scalable mobile solutions.",
+  },
+  {
     type: "work",
     year: "2021 – Present",
     title: "Freelance Flutter Developer",
     org: "Self-Employed (Google Play Store)",
     description:
-      "Developing and publishing 20+ applications on the Google Play Store. Managing the full project lifecycle from UI/UX design and coding to Firebase integration, App Store Optimization (ASO), and deployment.",
-  },
-  {
-    type: "work",
-    year: "2020 – 2021",
-    title: "Junior Flutter Developer",
-    org: "Independent Projects",
-    description:
-      "Focused on building localized service apps (e.g., transport and delivery systems). Solved complex technical challenges involving real-time location services and live data synchronization.",
+      "Successfully developed and published 20+ applications on the Google Play Store. Managing the full project lifecycle: from UI/UX design and Firebase integration to App Store Optimization (ASO) and deployment.",
   },
   {
     type: "education",
@@ -23,7 +23,15 @@ const timelineItems = [
     title: "Advanced Flutter & Firebase Bootcamp",
     org: "Udemy / Online Certification",
     description:
-      "Advanced certification in building fintech applications, integrating payment gateways, and implementing complex State Management patterns.",
+      "Advanced certification focusing on fintech applications, payment gateway integration, and implementing complex architectural patterns in Flutter.",
+  },
+  {
+    type: "work",
+    year: "2020 – 2021",
+    title: "Junior Flutter Developer",
+    org: "Independent Projects",
+    description:
+      "Built localized service applications, including transport and delivery systems. Specialized in real-time location services and live data synchronization.",
   },
   {
     type: "work",
@@ -31,15 +39,15 @@ const timelineItems = [
     title: "Mobile App Designer & Developer",
     org: "Contract Projects",
     description:
-      "Started my mobile development journey by designing user interfaces (UI) and converting them into functional Android applications using Flutter.",
+      "Started the journey by bridging the gap between design and code, converting UI prototypes into functional Android applications using Flutter.",
   },
   {
     type: "education",
-    year: "2018 – 2022",
-    title: "Bachelor's Degree in Computer Science",
-    org: "Tanta University",
+    year: "2015 – 2019",
+    title: "Bachelor's Degree in Fundamentals of Religion and Dawah",
+    org: "Al-Azhar University",
     description:
-      "Studied Computer Science with a focus on Software Engineering and Databases. Final graduation project was a fully integrated mobile application.",
+      "Studied Islamic theology, Quranic exegesis (Tafsir), and Hadith sciences. Developed strong communication and analytical skills through the study of contemporary religious discourse.",
   },
 ];
 
@@ -51,7 +59,7 @@ export default function Timeline() {
           <span className="accent-line mx-auto" />
           <h2 className="section-heading mt-4">Education & Experience</h2>
           <p className="section-subheading max-w-2xl mx-auto">
-            My journey from a Computer Science student to a professional developer with dozens of successful apps on the store.
+            A unique journey blending academic depth in humanities with professional expertise in mobile development, featuring 20+ successful apps on the store.
           </p>
         </div>
 

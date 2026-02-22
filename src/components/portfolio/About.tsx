@@ -1,45 +1,43 @@
 import { Code2, Smartphone, Users } from "lucide-react";
-
-const stats = [
-  { value: "4+", label: "Years Experience" },
-  { value: "20+", label: "Apps Delivered" },
-  { value: "15+", label: "Happy Clients" },
-  { value: "99%", label: "Client Satisfaction" },
-];
+import meImage from "@/assets/me.png";
 
 export default function About() {
   return (
-    <section id="about" className="py-24 relative">
+    // استخدام py-16 للمحمول و py-24 للديسكتوب لتقليل الفراغات الكبيرة في الشاشات الصغيرة
+    <section id="about" className="py-16 md:py-24 relative overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          {/* Left: Text */}
-          <div>
-            <span className="accent-line block" />
-            <h2 className="section-heading text-left">About Me</h2>
-            <p className="text-muted-foreground mb-5 leading-relaxed">
-              I'm a passionate Flutter Developer with over 5 years of experience turning complex
-              business problems into elegant mobile experiences. My journey started with native
-              Android development, but Flutter's cross-platform power and beautiful UI primitives
-              captured my full attention.
-            </p>
-            <p className="text-muted-foreground mb-5 leading-relaxed">
-              I specialize in building scalable, maintainable applications using the{" "}
-              <span className="text-primary font-medium">BLoC architecture</span>, integrating
-              real-time Firebase backends, and designing pixel-perfect interfaces that follow
-              Material Design and Cupertino guidelines.
-            </p>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
-              Outside of code, I contribute to open-source Flutter packages and mentor junior
-              developers in the community. My goal is always the same: ship software that is{" "}
-              <span className="text-accent font-medium">fast, reliable, and delightful</span>.
-            </p>
+        {/* تغيير gap-10 للمحمول و gap-16 للديسكتوب */}
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
-            <div className="flex flex-wrap gap-3">
-              {["Flutter", "Dart", "Firebase", "BLoC", "GetX", "REST APIs", "CI/CD", "Git"].map(
+          {/* Left: Text - ترتيب الظهور الأول في الموبايل */}
+          <div className="order-2 lg:order-1">
+            <span className="accent-line block" />
+            <h2 className="section-heading text-left text-2xl md:text-3xl lg:text-4xl">About Me</h2>
+
+            <div className="space-y-4 md:space-y-5">
+              <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                I'm a passionate Flutter Developer with over 4 years of experience turning complex
+                business problems into elegant mobile experiences. My journey started with native
+                Android development, but Flutter's cross-platform power and beautiful UI primitives
+                captured my full attention.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                I specialize in building scalable, maintainable applications using the{" "}
+                <span className="text-primary font-medium">BLoC architecture</span>, integrating
+                real-time Firebase backends, and designing pixel-perfect interfaces.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-6 md:mb-8">
+                My goal is always the same: ship software that is{" "}
+                <span className="text-accent font-medium">fast, reliable, and delightful</span>.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-2 md:gap-3 mt-6">
+              {["Flutter", "Dart", "Firebase", "BLoC", "GetX", "REST APIs", "CI/CD", "Git", "Google Console"].map(
                 (tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 rounded-lg bg-primary/10 border border-primary/20 text-primary text-sm font-medium"
+                    className="px-2.5 py-1 md:px-3 md:py-1 rounded-lg bg-primary/10 border border-primary/20 text-primary text-[10px] md:text-xs lg:text-sm font-medium"
                   >
                     {tag}
                   </span>
@@ -48,49 +46,20 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right: Stats + highlights */}
-          <div className="space-y-6">
-            {/* Stats grid */}
-            <div className="grid grid-cols-2 gap-4">
-              {stats.map((s) => (
-                <div key={s.label} className="glass-card p-6 text-center">
-                  <div className="font-display text-3xl font-bold text-gradient mb-1">{s.value}</div>
-                  <div className="text-muted-foreground text-sm">{s.label}</div>
-                </div>
-              ))}
-            </div>
+          {/* Right: Professional Photo Frame - يظهر في الأعلى في الموبايل ليعطي انطباع بصري أسرع */}
+          <div className="relative order-1 lg:order-2 flex justify-center">
+            {/* Background Decorative Element - مخفية في الموبايل لتقليل التشتت */}
+            <div className="absolute -inset-4 bg-gradient-to-tr from-primary/10 to-transparent rounded-[2.5rem] blur-2xl hidden md:block" />
 
-            {/* Highlights */}
-            <div className="glass-card p-6 space-y-4">
-              {[
-                {
-                  icon: Smartphone,
-                  title: "Cross-Platform Expert",
-                  desc: "One codebase, native performance on iOS & Android.",
-                },
-                {
-                  icon: Code2,
-                  title: "Clean Architecture",
-                  desc: "SOLID principles, BLoC pattern, testable codebases.",
-                },
-                {
-                  icon: Users,
-                  title: "Client-First Approach",
-                  desc: "Clear communication, timely delivery, long-term partnerships.",
-                },
-              ].map(({ icon: Icon, title, desc }) => (
-                <div key={title} className="flex gap-4 items-start">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
-                    <Icon size={18} className="text-primary" />
-                  </div>
-                  <div>
-                    <div className="font-display font-semibold text-foreground text-sm">{title}</div>
-                    <div className="text-muted-foreground text-sm">{desc}</div>
-                  </div>
-                </div>
-              ))}
+            <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] lg:max-w-none aspect-square lg:aspect-[4/5] overflow-hidden rounded-3xl">
+              <img
+                src={meImage}
+                alt="Khaled Ghaly"
+                className="w-full h-full object-contain p-0 md:p-8 transition-all duration-700 hover:scale-105"
+              />
             </div>
           </div>
+
         </div>
       </div>
     </section>

@@ -15,7 +15,7 @@ const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
   const href = (e.currentTarget as HTMLAnchorElement).href;
   const hash = href.split("#")[1];
 
-  if (hash && hash !== "hero") {
+  if (hash) {
     e.preventDefault();
     const element = document.getElementById(hash);
     if (element) {

@@ -57,7 +57,7 @@ export default function Contact() {
       <div className="container mx-auto px-6">
         <div className="text-center mb-4">
           <span className="accent-line" />
-          <h2 className="section-heading">Get In Touch</h2>
+          <h2 className="section-heading">Call To Action</h2>
           <p className="section-subheading">
             Ready to build something great together? Let's start a conversation.
           </p>

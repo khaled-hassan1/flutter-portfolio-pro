@@ -1,5 +1,6 @@
 import { ExternalLink, Play } from "lucide-react";
 
+
 const projects = [
   {
     title: "Elragol El3nab",
@@ -161,8 +162,83 @@ const projects = [
     link: "https://play.google.com/store/apps/details?id=com.kg.qasas_quran",
     gradient: "from-teal-500/10 to-green-500/5",
   },
+  {
+    title: "Hadaya.AI",
+    description: "Hadaya.AI is a smart social commerce application that helps you shop smartly and share favorite products with your friends through interactive circuits and boards.",
+    tags: ["Social", "Commerce", "AI"],
+    image: "https://play-lh.googleusercontent.com/fb4MQAPAws69aHDk_T7jVbGkne7dqz3QgvonJcgK3IyEykw72H2oT8WWXPQiAdX8_uuYIZek4FCB75NtgGFi=w240-h480",
+    link: "https://play.google.com/store/apps/details?id=ai.hadaya",
+    gradient: "from-teal-500/10 to-green-500/5",
+  },
 ];
 
+function ProjectCard({ project }) {
+  // هذا الرابط البديل (أيقونة تطبيق افتراضية)
+  const fallbackImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRowwNtgVEgHIaIUeV7kmDBMRHwZh2siWgb0A&s";
+
+  const handleImageError = (e) => {
+    e.currentTarget.src = fallbackImage;
+  };
+
+  return (
+    <div
+      className={`glass-card p-0 overflow-hidden group hover:border-primary/40 transition-all duration-500 hover:-translate-y-2 bg-gradient-to-br ${project.gradient}`}
+    >
+      <div className="p-7">
+        {/* Image Header */}
+        <div className="flex items-start justify-between mb-6">
+          <div className="relative">
+            <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full group-hover:bg-primary/30 transition-colors"></div>
+            <img
+              src={project.image}
+              alt={project.title}
+              onError={handleImageError} // هنا السحر: لو الصورة باظت هيحط البديل
+              className="w-16 h-16 rounded-2xl relative z-10 shadow-lg object-cover border border-white/10 group-hover:scale-105 transition-transform duration-500 bg-background"
+            />
+          </div>
+          <div className="flex items-center gap-1.5 text-primary text-[10px] font-black tracking-[0.2em] bg-primary/5 px-3 py-1.5 rounded-full border border-primary/10">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            LIVE
+          </div>
+        </div>
+
+        <h3 className="font-display font-bold text-foreground text-xl mb-3 group-hover:text-primary transition-colors">
+          {project.title}
+        </h3>
+        <p className="text-muted-foreground text-sm leading-relaxed mb-6 h-10 overflow-hidden line-clamp-2">
+          {project.description}
+        </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mb-8">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-[9px] px-2.5 py-1 rounded-md bg-background/50 border border-border/50 text-muted-foreground uppercase font-bold tracking-tighter"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-primary text-xs py-3 px-4 w-full justify-center group-hover:shadow-lg group-hover:shadow-primary/20 transition-all flex items-center gap-3 font-bold"
+        >
+          <Play size={14} fill="currentColor" />
+          VIEW ON GOOGLE PLAY
+          <ExternalLink size={15} className="ml-auto text-white opacity-100" />
+        </a>
+      </div>
+    </div>
+  );
+}
 export default function Projects() {
   return (
     <section id="projects" className="py-24" style={{ background: "hsl(var(--muted))" }}>
@@ -177,62 +253,7 @@ export default function Projects() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {projects.map((project) => (
-            <div
-              key={project.title}
-              className={`glass-card p-0 overflow-hidden group hover:border-primary/40 transition-all duration-500 hover:-translate-y-2 bg-gradient-to-br ${project.gradient}`}
-            >
-              <div className="p-7">
-                {/* Image Header */}
-                <div className="flex items-start justify-between mb-6">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full group-hover:bg-primary/30 transition-colors"></div>
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-16 h-16 rounded-2xl relative z-10 shadow-lg object-cover border border-white/10 group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="flex items-center gap-1.5 text-primary text-[10px] font-black tracking-[0.2em] bg-primary/5 px-3 py-1.5 rounded-full border border-primary/10">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                    </span>
-                    LIVE
-                  </div>
-                </div>
-
-                <h3 className="font-display font-bold text-foreground text-xl mb-3 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6 h-10 overflow-hidden line-clamp-3">
-                  {project.description}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[9px] px-2.5 py-1 rounded-md bg-background/50 border border-border/50 text-muted-foreground uppercase font-bold tracking-tighter"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* CTA */}
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary text-xs py-3 px-4 w-full justify-center group-hover:shadow-lg group-hover:shadow-primary/20 transition-all flex items-center gap-3 font-bold"
-                >
-                  <Play size={14} fill="currentColor" />
-                  VIEW ON GOOGLE PLAY
-                  <ExternalLink size={12} className="ml-auto opacity-40" />
-                </a>
-              </div>
-            </div>
+            <ProjectCard key={project.title} project={project} />
           ))}
         </div>
 

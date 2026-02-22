@@ -70,36 +70,36 @@ export default function Hero() {
       <div className="absolute bottom-1/4 right-1/4 w-72 h-72 rounded-full blur-[100px] opacity-15"
         style={{ background: "hsl(var(--accent))" }} />
 
-      <div className="relative container mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+      <div className="relative container mx-auto px-4 md:px-6">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-center">
           {/* Left side - Text */}
-          <div className="text-center md:text-left">
+          <div className="text-center md:text-left pt-20 md:pt-0">
             {/* Badge */}
-            <div className="animate-fade-in-up inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-8">
+            <div className="animate-fade-in-up inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6 md:mb-8">
               <span className="w-2 h-2 rounded-full bg-accent glow-pulse inline-block" />
               Available for new projects
             </div>
 
             {/* Name */}
-            <h1 className="animate-fade-in-up animation-delay-100 font-display text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="animate-fade-in-up animation-delay-100 font-display text-4xl md:text-7xl font-bold mb-4 md:mb-6 leading-tight">
               Hi, I'm{" "}
               <span className="text-gradient glow-text">Khaled Ghaly</span>
             </h1>
 
             {/* Typing animation */}
-            <div className="animate-fade-in-up animation-delay-200 font-display text-2xl md:text-3xl font-bold mb-8 min-h-[1.5em] flex items-center justify-center md:justify-start">
+            <div className="animate-fade-in-up animation-delay-200 font-display text-xl md:text-3xl font-bold mb-6 md:mb-8 min-h-[1.5em] flex items-center justify-center md:justify-start">
               <span style={{ color: "hsl(var(--accent))" }}>{typed}</span>
               <span className="w-[3px] h-[1.2em] bg-accent ml-1 animate-pulse" />
             </div>
 
             {/* Bio intro */}
-            <p className="animate-fade-in-up animation-delay-300 text-muted-foreground mb-10 text-lg max-w-xl">
+            <p className="animate-fade-in-up animation-delay-300 text-muted-foreground mb-8 md:mb-10 text-base md:text-lg max-w-xl">
               Crafting high-performance cross-platform mobile apps that users love.
               Specialized in Flutter with 4+ years of real-world production experience.
             </p>
 
             {/* CTA Buttons */}
-            <div className="animate-fade-in-up animation-delay-400 flex flex-wrap gap-4 justify-center md:justify-start mb-12">
+            <div className="animate-fade-in-up animation-delay-400 flex flex-wrap gap-3 md:gap-4 justify-center md:justify-start mb-10 md:mb-12">
               <a
                 href="#projects"
                 onClick={(e) => handleAnchorClick(e, "projects")}
@@ -142,17 +142,18 @@ export default function Hero() {
             <div className="relative group">
               {/* Animated Rings */}
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary to-accent rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition duration-500" />
-              
-              <div className="relative w-56 h-72 md:w-72 md:h-96 rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl transform transition duration-500 group-hover:scale-[1.02]">
+
+              <div className="relative w-48 h-64 md:w-72 md:h-96 rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl transform transition duration-500 group-hover:scale-[1.02]">
                 <img
                   src={logoImage}
                   alt="Khaled Ghaly"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+                {/* تم حذف الـ div الخاص بالـ gradient من هنا لتبقى الصورة واضحة بالكامل */}
               </div>
             </div>
           </div>
+
         </div>
       </div>
 
