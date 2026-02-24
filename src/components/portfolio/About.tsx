@@ -1,4 +1,3 @@
-import { Code2, Smartphone, Users } from "lucide-react";
 import meImage from "@/assets/me.png";
 
 export default function About() {

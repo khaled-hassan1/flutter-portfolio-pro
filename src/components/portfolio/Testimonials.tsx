@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, Star, Award, Quote, ExternalLink, Image as ImageIcon } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star, Quote, ExternalLink } from "lucide-react";
 
 const testimonials = [
   {
@@ -28,38 +28,6 @@ const testimonials = [
   },
 ];
 
-const certifications = [
-  {
-    name: " Flutter Advanced Course Bloc and MVVM Pattern [Arabic]",
-    issuer: "Udemy / Tharwat Samy",
-    year: "03/14/2024",
-    image: "https://udemy-certificate.s3.amazonaws.com/image/UC-38b868cd-57e1-4b2e-9960-56e4c6bffc6f.jpg?v=1710387382000", // استبدلها برابط صورة الشهادة
-    link: "https://www.udemy.com/certificate/UC-38b868cd-57e1-4b2e-9960-56e4c6bffc6f/" // رابط التحقق من الشهادة
-  },
-  {
-    name: "The Complete Dart Learning Guide",
-    issuer: "Udemy / Hassan Fulaih",
-    year: "01/19/2024",
-    image: "https://udemy-certificate.s3.amazonaws.com/image/UC-6da45de7-cd0c-490d-b6ee-85901fef34cc.jpg?v=1705688354000",
-    link: "https://www.udemy.com/certificate/UC-6da45de7-cd0c-490d-b6ee-85901fef34cc/"
-  },
-  {
-    name: "The Complete Flutter Development Guide",
-    issuer: "Udemy / Hassan Fulaih",
-    year: "01/19/2024",
-    image: "https://udemy-certificate.s3.amazonaws.com/image/UC-603826ac-88b7-4beb-a0f1-ed7a53bd3fcf.jpg?v=1705689051000",
-    link: "https://www.udemy.com/certificate/UC-603826ac-88b7-4beb-a0f1-ed7a53bd3fcf/"
-  },
-  {
-    name: "The Complete Dart Development Guide",
-    issuer: "Udemy / Hassan Fulaih",
-    year: "10/15/2023",
-    image: "https://udemy-certificate.s3.amazonaws.com/image/UC-fbb15dda-d2cf-40ea-81ae-ef9de1d72233.jpg?v=1697321046000",
-    link: "https://www.udemy.com/certificate/UC-fbb15dda-d2cf-40ea-81ae-ef9de1d72233/"
-  },
-
-];
-
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
 
@@ -73,13 +41,13 @@ export default function Testimonials() {
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <span className="accent-line mx-auto" />
-          <h2 className="section-heading mt-4">Achievements & Testimonials</h2>
+          <h2 className="section-heading mt-4">Client Testimonials</h2>
           <p className="section-subheading max-w-2xl mx-auto">
-            What clients and users say about my work, alongside the professional milestones I've achieved.
+            What clients and users say about my work and the applications I've built.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           {/* Testimonial Slider */}
           <div className="relative">
             <div className="absolute -top-4 -left-4 text-primary/10">
@@ -129,42 +97,6 @@ export default function Testimonials() {
               <button onClick={next} className="w-10 h-10 rounded-xl border border-border bg-background hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 flex items-center justify-center shadow-sm">
                 <ChevronRight size={18} />
               </button>
-            </div>
-          </div>
-
-          {/* Certifications with Images */}
-          <div className="space-y-6">
-            <h3 className="font-display font-bold text-foreground text-xl mb-6 flex items-center gap-3">
-              <Award size={24} className="text-primary" />
-              Certifications
-            </h3>
-            <div className="grid gap-4">
-              {certifications.map((cert) => (
-                <a
-                  key={cert.name}
-                  href={cert.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="glass-card p-3 flex items-center gap-4 hover:border-primary/40 hover:bg-secondary/50 transition-all duration-300 group"
-                >
-                  <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 border border-border group-hover:border-primary/30">
-                    <img src={cert.image} alt={cert.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                    <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                      <ImageIcon size={16} className="text-white" />
-                    </div>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="font-bold text-foreground text-sm truncate">{cert.name}</div>
-                    <div className="text-muted-foreground text-xs">{cert.issuer}</div>
-                    <div className="flex items-center gap-2 mt-1">
-                      <span className="text-[9px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded uppercase tracking-wider">
-                        {cert.year}
-                      </span>
-                    </div>
-                  </div>
-                  <ExternalLink size={14} className="text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity mr-2" />
-                </a>
-              ))}
             </div>
           </div>
         </div>
